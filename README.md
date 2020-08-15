@@ -20,7 +20,14 @@ Run train.py with e.g.:
 python tools/train.py --cfg experiments/coco/hrnet/w32_384x288_adam_lr1e-3.yaml
 ```
 
-This will complain about the missing pre-trained model. Download and put in the right place.
+This will complain about the missing pre-trained model. Download and put in the right place, then try again.
+
+### tensorboard
+
+``` shell
+# use --bind_all if you want to access port 6006 from a different machine
+tensorboard --logdir log/coco/pose_hrnet/
+```
 
 ## News
 - [2020/07/05] [A very nice blog](https://towardsdatascience.com/overview-of-human-pose-estimation-neural-networks-hrnet-higherhrnet-architectures-and-faq-1954b2f8b249) from Towards Data Science introducing HRNet and HigherHRNet for human pose estimation.
