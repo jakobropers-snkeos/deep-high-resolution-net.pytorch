@@ -20,21 +20,24 @@ import torch.optim
 import torch.utils.data
 import torch.utils.data.distributed
 import torchvision.transforms as transforms
-from tensorboardX import SummaryWriter
 
-import _init_paths
-from config import cfg
-from config import update_config
-from core.loss import JointsMSELoss
-from core.function import train
-from core.function import validate
-from utils.utils import get_optimizer
-from utils.utils import save_checkpoint
-from utils.utils import create_logger
-from utils.utils import get_model_summary
+# use pytorch built-in tensorboard interface, no need for tensorboardX
+from torch.utils.tensorboard import SummaryWriter
+#from tensorboardX import SummaryWriter
 
-import dataset
-import models
+from tools import _init_paths
+from lib.config import cfg
+from lib.config import update_config
+from lib.core.loss import JointsMSELoss
+from lib.core.function import train
+from lib.core.function import validate
+from lib.utils.utils import get_optimizer
+from lib.utils.utils import save_checkpoint
+from lib.utils.utils import create_logger
+from lib.utils.utils import get_model_summary
+
+from lib import dataset
+from lib import models
 
 
 def parse_args():
