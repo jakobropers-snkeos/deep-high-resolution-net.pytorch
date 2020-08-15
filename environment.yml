@@ -1,0 +1,25 @@
+# create / update hrnet-pose conda environment with:
+# conda env update
+name: hrnet-pose
+channels:
+  - conda-forge
+  - pytorch
+dependencies:
+  - black
+  - flake8
+  - json_tricks
+  - jupyter
+  - cython
+  - pycocotools
+  - python=3.8
+  - scikit-learn
+  - opencv
+  - pandas
+  - pip
+  - pytorch
+  - tensorboardX
+  - torchvision
+  - cudatoolkit=10.1
+  - scikit-image
+  - shapely
+  - yacs
