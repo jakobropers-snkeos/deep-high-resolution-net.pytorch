@@ -91,9 +91,20 @@ def main():
     torch.backends.cudnn.deterministic = cfg.CUDNN.DETERMINISTIC
     torch.backends.cudnn.enabled = cfg.CUDNN.ENABLED
 
-    model = eval('models.'+cfg.MODEL.NAME+'.get_pose_net')(
-        cfg, is_train=True
-    )
+    # you only have two possible models (pose_hrnet, pose_hrnet), this eval() is not justified
+    # also it confuses code intelligence
+    # model = eval('models.'+cfg.MODEL.NAME+'.get_pose_net')(
+    #     cfg, is_train=True
+    # )
+
+    if cfg.MODEL.NAME == 'pose_hrnet':
+        model_mod = models.pose_hrnet
+    elif cfg.MODEL.NAME == 'pose_resnet':
+        model_mod = models.pose_resnet
+    else:
+        raise RuntimeError(f"Invalid model {cfg.MODEL.NAME} specified.")
+
+    model = model_mod.get_pose_net(cfg, is_train=True)
 
     # copy model file
     this_dir = os.path.dirname(__file__)
