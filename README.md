@@ -10,6 +10,7 @@ Setup a conda environment with:
 
 ``` shell
 conda env update
+conda activate hrnet-pose
 echo `pwd` > $CONDA_PREFIX/lib/python3.8/site-packages/conda.pth
 ```
 
