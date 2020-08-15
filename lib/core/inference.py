@@ -12,10 +12,10 @@ import math
 
 import numpy as np
 
-from utils.transforms import transform_preds
+from lib.utils.transforms import transform_preds
 
 
-def get_max_preds(batch_heatmaps):
+def get_max_preds(batch_heatmaps: np.ndarray):
     '''
     get predictions from score maps
     heatmaps: numpy.ndarray([batch_size, num_joints, height, width])
@@ -27,13 +27,19 @@ def get_max_preds(batch_heatmaps):
     batch_size = batch_heatmaps.shape[0]
     num_joints = batch_heatmaps.shape[1]
     width = batch_heatmaps.shape[3]
+
+    # for each joint, string out the heatmap as a vector of length HxW
     heatmaps_reshaped = batch_heatmaps.reshape((batch_size, num_joints, -1))
+    # along the each joint's strung out vector, what is the idx of the maximum value
     idx = np.argmax(heatmaps_reshaped, 2)
+    # and what is the value itself
     maxvals = np.amax(heatmaps_reshaped, 2)
 
+    # *probably* because argmax / amax return a [single_element], pop that out
     maxvals = maxvals.reshape((batch_size, num_joints, 1))
     idx = idx.reshape((batch_size, num_joints, 1))
 
+    # Authors have left us no comments here (or anywhere else really) to help. :(
     preds = np.tile(idx, (1, 1, 2)).astype(np.float32)
 
     preds[:, :, 0] = (preds[:, :, 0]) % width
