@@ -4,6 +4,12 @@
 # Written by Bin Xiao (Bin.Xiao@microsoft.com)
 # ------------------------------------------------------------------------------
 
+# with conda environment active, run with:
+# PYTHONPATH=. python tools/train.py
+
+# alternatively to setting the PYTHONPATH, add your checkout directory to the env's search path
+# echo `pwd` > ~/miniconda3/envs/hrnet-pose/lib/python3.8/site-packages/conda.pth
+
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
