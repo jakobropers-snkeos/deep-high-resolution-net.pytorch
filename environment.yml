@@ -17,7 +17,7 @@ dependencies:
   - pandas
   - pip
   - pytorch
-  - tensorboardX
+  - tensorboard
   - torchvision
   - cudatoolkit=10.1
   - scikit-image
