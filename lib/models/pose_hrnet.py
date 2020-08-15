@@ -279,9 +279,11 @@ class PoseHighResolutionNet(nn.Module):
         super(PoseHighResolutionNet, self).__init__()
 
         # stem net
+        # cpbotha: stride=2 here halves the resolution from e.g. 384x288 to 192x144
         self.conv1 = nn.Conv2d(3, 64, kernel_size=3, stride=2, padding=1,
                                bias=False)
         self.bn1 = nn.BatchNorm2d(64, momentum=BN_MOMENTUM)
+        # another halving with stride=2 from e.g. 192x144 to 64x96
         self.conv2 = nn.Conv2d(64, 64, kernel_size=3, stride=2, padding=1,
                                bias=False)
         self.bn2 = nn.BatchNorm2d(64, momentum=BN_MOMENTUM)
@@ -458,6 +460,7 @@ class PoseHighResolutionNet(nn.Module):
                 x_list.append(y_list[i])
         y_list = self.stage4(x_list)
 
+        # this is the heatmap output
         x = self.final_layer(y_list[0])
 
         return x
