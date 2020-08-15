@@ -1,0 +1,3 @@
+[tool.black]
+# change black's default from 88 characters to 120 characters
+line-length = 120
