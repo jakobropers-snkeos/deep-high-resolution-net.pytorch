@@ -1,4 +1,26 @@
 # Deep High-Resolution Representation Learning for Human Pose Estimation (CVPR 2019)
+
+## cpbotha's fork
+
+This is cpbotha's personal fork, containing mostly code comments as I figure out how to adapt this to my own applications.
+
+Why were there almost no code comments to begin with?
+
+Setup a conda environment with:
+
+``` shell
+conda env update
+echo `pwd` > $CONDA_PREFIX/lib/python3.8/site-packages/conda.pth
+```
+
+Run train.py with e.g.:
+
+``` shell
+python tools/train.py --cfg experiments/coco/hrnet/w32_384x288_adam_lr1e-3.yaml
+```
+
+This will complain about the missing pre-trained model. Download and put in the right place.
+
 ## News
 - [2020/07/05] [A very nice blog](https://towardsdatascience.com/overview-of-human-pose-estimation-neural-networks-hrnet-higherhrnet-architectures-and-faq-1954b2f8b249) from Towards Data Science introducing HRNet and HigherHRNet for human pose estimation.
 - [2020/03/13] A longer version is accepted by TPAMI: [Deep High-Resolution Representation Learning for Visual Recognition](https://arxiv.org/pdf/1908.07919.pdf). It includes more HRNet applications, and the codes are available: [semantic segmentation](https://github.com/HRNet/HRNet-Semantic-Segmentation),  [objection detection](https://github.com/HRNet/HRNet-Object-Detection),  [facial landmark detection](https://github.com/HRNet/HRNet-Facial-Landmark-Detection), and [image classification](https://github.com/HRNet/HRNet-Image-Classification).
