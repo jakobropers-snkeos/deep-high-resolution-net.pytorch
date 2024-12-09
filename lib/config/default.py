@@ -153,6 +153,14 @@ def update_config(cfg, args):
     cfg.freeze()
 
 
+def update_config_alt(cfg, configs):
+    cfg.defrost()
+    cfg.merge_from_file(configs["pose_model"]["cfg"])
+    cfg.OUTPUT_DIR = configs["output"]["output_path"]
+    cfg.TEST.MODEL_FILE = configs["pose_model"]["weights"]
+    cfg.freeze()
+
+
 if __name__ == '__main__':
     import sys
     with open(sys.argv[1], 'w') as f:

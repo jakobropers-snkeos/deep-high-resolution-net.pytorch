@@ -5,5 +5,5 @@
 # ------------------------------------------------------------------------------
 
 from .default import _C as cfg
-from .default import update_config
+from .default import update_config, update_config_alt
 from .models import MODEL_EXTRAS
